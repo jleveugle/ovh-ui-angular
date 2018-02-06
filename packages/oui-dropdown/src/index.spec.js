@@ -22,7 +22,7 @@ describe("ouiDropdown", () => {
             );
 
             const trigger = element[0].querySelector(".oui-dropdown__trigger");
-            expect(angular.element(trigger).hasClass("oui-button_dropdown")).toBeTruthy();
+            expect(angular.element(trigger).hasClass("oui-button_dropdown")).toBeFalsy();
         });
 
         it("should have trigger and dropdown elements but no arrow", () => {
