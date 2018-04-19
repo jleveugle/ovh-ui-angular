@@ -66,6 +66,35 @@
 </form>
 ```
 
+### Input with custom validation
+
+```html:preview
+<form name="customValidationForm">
+    
+    <oui-field label="Password"
+        size="xl">
+        <input
+            class="oui-input"
+            type="text"
+            id="password"
+            name="password"
+            ng-model="$ctrl.password">
+    </oui-field>
+    
+    <oui-field label="Password validation"
+        error-messages="{ 'customValidation': 'Password are not matching' }"
+        size="xl">
+        <input
+            class="oui-input"
+            type="text"
+            id="passwordVerification"
+            name="passwordVerification"
+            ng-model="$ctrl.passwordVerification"
+            custom-validation="$ctrl.passwordVerification === $ctrl.password">
+    </oui-field>
+</form>
+```
+
 ### Checkbox
 
 ```html:preview
