@@ -47,7 +47,7 @@
             <oui-button variant="primary" type="submit"
                 text="{{::$ctrl.submitText || ($ctrl.stepper.last ? $ctrl.translations.submitButtonLabel : $ctrl.translations.nextButtonLabel)}}">
             </oui-button>
-            <oui-button variant="link" text="Link"
+            <oui-button variant="link"
                 ng-if="::!$ctrl.cancelHref && !!$ctrl.onCancel"
                 text="{{::$ctrl.cancelText}}"
                 on-click="$ctrl.onCancel()">
