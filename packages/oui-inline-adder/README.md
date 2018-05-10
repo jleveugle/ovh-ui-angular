@@ -35,14 +35,14 @@ All form elements in an Inline Adder must be short. An Inline Adder can contain 
     on-remove="$ctrl.removeItem(item)">
     <oui-inline-adder-item data-ng-repeat="item in $ctrl.dualFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
         <oui-inline-adder-row>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="dual-field-prop1" class="oui-label">Property 1</label>
                 <input type="text" class="oui-input"
                     id="dual-field-prop1"
                     data-ng-model="item.prop1"
                     data-ng-disabled="!item.isNew">
             </div>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="dual-field-prop2" class="oui-label">Property 2</label>
                 <input type="text" class="oui-input"
                     id="dual-field-prop2"
@@ -62,14 +62,14 @@ All form elements in an Inline Adder must be short. An Inline Adder can contain 
     on-remove="$ctrl.removeItem(item)">
     <oui-inline-adder-item data-ng-repeat="item in $ctrl.tripleFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
         <oui-inline-adder-row>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="triple-field-prop1" class="oui-label">Property 1</label>
                 <input type="text" class="oui-input"
                     id="triple-field-prop1"
                     data-ng-model="item.prop1"
                     data-ng-disabled="!item.isNew">
             </div>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="triple-field-prop2" class="oui-label">Property 2</label>
                 <input type="text" class="oui-input"
                     id="triple-field-prop2"
@@ -99,14 +99,14 @@ An Inline Adder can have more than one row and be displayed as a group.
     on-remove="$ctrl.removeItem(item)">
     <oui-inline-adder-item data-ng-repeat="item in $ctrl.quadraFieldItems" item="item" is-new-item="item.isNew" aria-add-item="Add new item" aria-remove-item="Remove item {{$index+1}}">
         <oui-inline-adder-row>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="quadra-field-prop1" class="oui-label">Property 1</label>
                 <input type="text" class="oui-input"
                     id = "quadra-field-prop1"
                     data-ng-model="item.prop1"
                     data-ng-disabled="!item.isNew">
             </div>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="quadra-field-prop2" class="oui-label">Property 2</label>
                 <input type="text" class="oui-input"
                     id = "quadra-field-prop2"
@@ -115,14 +115,14 @@ An Inline Adder can have more than one row and be displayed as a group.
             </div>
         </oui-inline-adder-row>
         <oui-inline-adder-row>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="quadra-field-prop3" class="oui-label">Property 3</label>
                 <input type="text" class="oui-input"
                     id = "quadra-field-prop3"
                     data-ng-model="item.prop3"
                     data-ng-disabled="!item.isNew">
             </div>
-            <div style="flex: 1; padding: 1rem; padding-bottom: 0;">
+            <div style="flex: 1 1 auto; padding: 1rem; padding-bottom: 0;">
                 <label for="quadra-field-prop4" class="oui-label">Property 4</label>
                 <input type="text" class="oui-input"
                     id = "quadra-field-prop4"
