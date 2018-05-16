@@ -1,7 +1,7 @@
 <div class="oui-inline-adder__item">
     <div class="oui-inline-adder__rows_container" ng-transclude></div>
     <div class="oui-inline-adder__actions-container">
-        <oui-spinner ng-if="$ctrl.isLoading"></oui-spinner>
+        <oui-spinner size="s" ng-if="$ctrl.isLoading"></oui-spinner>
         <button class="oui-inline-adder__actions-button oui-button oui-button_secondary oui-button_small-width"
             aria-label="{{::$ctrl.ariaRemoveItem}}"
             ng-if="!$ctrl.isLoading && !$ctrl.isNewItem"
