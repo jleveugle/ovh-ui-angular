@@ -10,7 +10,6 @@ describe("ouiRadio", () => {
         $timeout = _$timeout_;
     }));
 
-    const getMainBlockElement = (element) => element[0].querySelector(":first-child");
     const getRadioInputElement = (element) => element[0].querySelector("input[type=radio]");
     const getRadioLabelElement = (element) => element[0].querySelector("label");
     const getRadioTextContainerElement = (element) => element[0].querySelector(".oui-radio__label span:first-child");
@@ -22,10 +21,10 @@ describe("ouiRadio", () => {
                 const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
 
                 const radioElement = getRadioInputElement(element);
-                expect(angular.element(radioElement).prop("id")).toMatch(/^oui-radio-\d+$/);
+                expect(angular.element(radioElement).prop("id")).toMatch(/^ouiRadio\d+$/);
 
                 const radioLabelElement = getRadioLabelElement(element);
-                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^oui-radio-\d+$/);
+                expect(angular.element(radioLabelElement).attr("for")).toMatch(/^ouiRadio\d+$/);
             });
 
             it("should set the id for the input and label when defined", () => {
@@ -42,6 +41,20 @@ describe("ouiRadio", () => {
         describe("name attribute", () => {
             it("should set the name attribute on input when defined", () => {
                 const element = TestUtils.compileTemplate('<oui-radio name="test"></oui-radio>');
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("name")).toBe("test");
+            });
+
+            it("should set the name attribute on input when defined with id", () => {
+                const element = TestUtils.compileTemplate('<oui-radio name="test" id="testid"></oui-radio>');
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("name")).toBe("test");
+            });
+
+            it("should set the name attribute to id when only id is defined", () => {
+                const element = TestUtils.compileTemplate('<oui-radio id="test"></oui-radio>');
 
                 const radioElement = getRadioInputElement(element);
                 expect(angular.element(radioElement).prop("name")).toBe("test");
@@ -116,19 +129,50 @@ describe("ouiRadio", () => {
             });
         });
 
+        describe("required attribute", () => {
+            it("should display an active radio when no attribute", () => {
+                const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(false);
+            });
+
+            it("should display a required radio when defined but no value", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required></oui-radio>");
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(true);
+            });
+
+            it("should display a required radio when true", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required=\"$ctrl.required\"></oui-radio>", {
+                    required: true
+                });
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(true);
+            });
+
+            it("should display an active radio when false", () => {
+                const element = TestUtils.compileTemplate("<oui-radio required=\"$ctrl.notRequired\"></oui-radio>", {
+                    notRequired: false
+                });
+
+                const radioElement = getRadioInputElement(element);
+                expect(angular.element(radioElement).prop("required")).toBe(false);
+            });
+        });
+
+
         describe("thumbnail attribute", () => {
             it("should display a classic radio when no attribute", () => {
                 const element = TestUtils.compileTemplate("<oui-radio></oui-radio>");
-
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(false);
             });
 
             it("should display a thumbnail radio when defined but no value", () => {
                 const element = TestUtils.compileTemplate("<oui-radio thumbnail></oui-radio>");
-
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(true);
             });
 
             it("should display a classic radio when false", () => {
@@ -136,8 +180,7 @@ describe("ouiRadio", () => {
                     thumbnail: false
                 });
 
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(false);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(false);
             });
 
             it("should display a thumbnail radio when true", () => {
@@ -145,8 +188,7 @@ describe("ouiRadio", () => {
                     thumbnail: true
                 });
 
-                const mainBlockElement = getMainBlockElement(element);
-                expect(angular.element(mainBlockElement).hasClass("oui-radio_thumbnail")).toBe(true);
+                expect(angular.element(element).hasClass("oui-radio_thumbnail")).toBe(true);
             });
         });
 

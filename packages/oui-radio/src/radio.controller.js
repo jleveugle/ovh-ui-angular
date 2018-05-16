@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 
 export default class {
     constructor ($scope, $element, $attrs, $timeout) {
@@ -21,12 +21,14 @@ export default class {
     }
 
     $onInit () {
-
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "thumbnail");
+        addBooleanParameter(this, "required");
+        addDefaultParameter(this, "id", `ouiRadio${this.$scope.$id}`);
 
-        if (!this.id) {
-            this.id = `oui-radio-${this.$scope.$id}`;
+        this.$element.addClass(this.radioToggleGroup ? "oui-radio-toggle" : "oui-radio");
+        if (this.thumbnail && !this.radioToggleGroup) {
+            this.$element.addClass("oui-radio_thumbnail");
         }
 
         this.group = this.radioGroup || this.radioToggleGroup;
@@ -36,7 +38,7 @@ export default class {
                 this.model = value;
             });
         } else {
-            this.name = this.id;
+            addDefaultParameter(this, "name", this.id);
         }
     }
 

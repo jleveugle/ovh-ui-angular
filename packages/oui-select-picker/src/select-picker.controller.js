@@ -1,4 +1,4 @@
-import { addBooleanParameter } from "@oui-angular/common/component-utils";
+import { addBooleanParameter, addDefaultParameter } from "@oui-angular/common/component-utils";
 import { get } from "lodash";
 
 export default class SelectPickerController {
@@ -10,6 +10,8 @@ export default class SelectPickerController {
         this.$attrs = $attrs;
         this.$timeout = $timeout;
         this.$transclude = $transclude;
+
+        this.$scope.getItemValue = (item, path) => get(item, path, "");
     }
 
     $postLink () {
@@ -28,13 +30,14 @@ export default class SelectPickerController {
     $onInit () {
         addBooleanParameter(this, "disabled");
         addBooleanParameter(this, "required");
-
-        if (!self.id) {
-            this.id = `oui-select-picker-${this.$scope.$id}`;
-        }
+        addDefaultParameter(this, "id", `ouiSelectPicker${this.$scope.$id}`);
 
         if (this.picture) {
             this.isImgPath = /\.(gif|png|jpg)$/.test(this.picture);
+        }
+
+        if (this.values && this.values.length === 1) {
+            this.selectedValue = this.values[0];
         }
 
         this.transcludeSection = this.$transclude.isSlotFilled("sectionSlot");
